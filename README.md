@@ -19,6 +19,14 @@ Just add following section to your repositories tag in pom.xml
         </repository>
     </repositories>
 ```
+Then add a dependency into <dependencies> tag of your pom.xml
+```{xml}
+        <dependency>
+            <groupId>com.codenjoy</groupId>
+            <artifactId>dojo-transport</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+```
 
 How to build & deploy
 ------------
