@@ -1,4 +1,4 @@
-__Transport framework for Dojo-like__
+__Transport framework for Dojo-like games__
 ==============
 
 Encapsulates transportation details between client and server.
