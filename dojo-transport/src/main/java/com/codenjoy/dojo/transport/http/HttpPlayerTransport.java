@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
@@ -94,6 +95,12 @@ public class HttpPlayerTransport implements PlayerTransport<String, HttpResponse
         client.setThreadPool(new ExecutorThreadPool(corePoolSize, maximumPoolSize, timeout, TimeUnit.MILLISECONDS));
         client.setTimeout(timeout);
         client.start();
+    }
+
+    @PreDestroy
+    public void destroy() throws Exception {
+        client.stop();
+        client.destroy();
     }
 
     public void setSync(boolean sync) {
