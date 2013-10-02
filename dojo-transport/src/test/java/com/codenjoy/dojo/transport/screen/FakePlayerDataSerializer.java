@@ -22,9 +22,9 @@ public class FakePlayerDataSerializer implements PlayerDataSerializer<FakePlayer
     public FakePlayerDataSerializer() {
         objectMapper = new ObjectMapper();
         SimpleModule module = new SimpleModule();
-        module.addSerializer(new StdSerializer<TestPlot>(TestPlot.class) {
+        module.addSerializer(new StdSerializer<SomePlot>(SomePlot.class) {
             @Override
-            public void serialize(TestPlot value, JsonGenerator jgen, SerializerProvider provider) throws IOException, JsonGenerationException {
+            public void serialize(SomePlot value, JsonGenerator jgen, SerializerProvider provider) throws IOException, JsonGenerationException {
                 jgen.writeStartObject();
                 jgen.writeArrayFieldStart(value.getColor().getName());
                 jgen.writeNumber(value.getX());

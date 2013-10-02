@@ -5,7 +5,7 @@ package com.codenjoy.dojo.transport.screen;
  * Date: 9/26/13
  * Time: 2:39 PM
  */
-public enum TestPlotColor {
+public enum SomePlotColor {
     BLUE, CYAN, ORANGE, YELLOW, GREEN, PURPLE, RED;
 
     public String getName() {

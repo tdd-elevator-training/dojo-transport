@@ -5,12 +5,12 @@ package com.codenjoy.dojo.transport.screen;
  * Date: 9/26/13
  * Time: 2:44 PM
  */
-public class TestPlot {
+public class SomePlot {
     private int x;
     private int y;
-    private TestPlotColor color;
+    private SomePlotColor color;
 
-    public TestPlot(int x, int y, TestPlotColor color) {
+    public SomePlot(int x, int y, SomePlotColor color) {
         this.x = x;
         this.y = y;
         this.color = color;
@@ -24,13 +24,13 @@ public class TestPlot {
         return y;
     }
 
-    public TestPlotColor getColor() {
+    public SomePlotColor getColor() {
         return color;
     }
 
     @Override
     public String toString() {
-        return "Plot{" +
+        return "SomePlot{" +
                 "x=" + x +
                 ", y=" + y +
                 ", color=" + color +
