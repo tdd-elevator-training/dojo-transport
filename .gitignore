@@ -6,3 +6,5 @@
 *.ear
 
 /dojo-transport/.idea
+/dojo-transport/target
+/dojo-transport/*.iml
