@@ -24,7 +24,7 @@ Then add a dependency into <dependencies> tag of your pom.xml
         <dependency>
             <groupId>com.codenjoy</groupId>
             <artifactId>dojo-transport</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.2-SNAPSHOT</version>
         </dependency>
 ```
 
