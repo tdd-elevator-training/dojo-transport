@@ -1,8 +1,6 @@
 package com.codenjoy.dojo.transport.ws;
 
 import com.codenjoy.dojo.transport.PlayerResponseHandler;
-import com.codenjoy.dojo.transport.PlayerTransport;
-import com.codenjoy.dojo.transport.TransportErrorType;
 import org.eclipse.jetty.websocket.WebSocket;
 
 import java.io.IOException;
@@ -18,24 +16,32 @@ public class PlayerSocket implements WebSocket.OnTextMessage {
     private String authId;
     private WebSocketPlayerTransport transport;
     private PlayerResponseHandler handler = WebSocketPlayerTransport.NULL_HANDLER;
+    private boolean requested;
 
     public PlayerSocket(String authId, WebSocketPlayerTransport transport) {
         this.authId = authId;
         this.transport = transport;
+        requested = false;
     }
 
     @Override
     public void onMessage(String message) {
-        handler.onResponseComplete(message, null);
+        System.out.println("onMessage, message=" + message + ", requested=" + requested);
+        if (requested) {
+            requested = false;
+            handler.onResponseComplete(message, null);
+        }
     }
 
     @Override
     public void onOpen(Connection connection) {
         this.connection = connection;
+        requested = false;
     }
 
     @Override
     public void onClose(int i, String s) {
+        requested = false;
         if (authId == null) {
             return;
         }
@@ -46,10 +52,15 @@ public class PlayerSocket implements WebSocket.OnTextMessage {
         if (connection == null) {
             return;
         }
-        connection.sendMessage(message);
+        System.out.println("sendMessage, message=" + message + ", requested=" + requested);
+        if (!requested) {
+            requested = true;
+            connection.sendMessage(message);
+        }
     }
 
     public void close() {
+        requested = false;
         if (connection == null) {
             return;
         }
