@@ -26,7 +26,6 @@ public class PlayerSocket implements WebSocket.OnTextMessage {
 
     @Override
     public void onMessage(String message) {
-        System.out.println("onMessage, message=" + message + ", requested=" + requested);
         if (requested) {
             requested = false;
             handler.onResponseComplete(message, null);
@@ -52,7 +51,6 @@ public class PlayerSocket implements WebSocket.OnTextMessage {
         if (connection == null) {
             return;
         }
-        System.out.println("sendMessage, message=" + message + ", requested=" + requested);
         if (!requested) {
             requested = true;
             connection.sendMessage(message);
